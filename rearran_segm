@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char **argv){
+    int m = 0;
+    int n = 0;
+    printf("Введите длину начала: ");
+    scanf("%d", &m);
+    printf("Введите длину конца: ");
+    scanf("%d", &n);
+
+    //создание динамического массива
+    int lenght = m + n;
+    int* list = (int *)malloc(lenght * sizeof(int));
+    for (int i = 1; i < m + n + 1; i++)
+    {
+        int i_1 = i - 1;
+        list[i - 1] = i;
+    }
+
+    //сравнивание длин конца и начала, и создание переменных для дальнейшей перестановки элементов и сортировки
+    //(c какого по какой переставлять)
+    int start_sort = 0;
+    int finish_sort = 0;
+    int finish_repl = 0;
+    if(n > m){
+        start_sort = 0;
+        finish_sort = m;
+        finish_repl = m;
+
+    } else {
+        finish_sort = 0;
+        start_sort = n;
+        finish_repl = n;
+    }
+
+    //цикл, чтоб поменять местами элементы
+    for (int i = 0; i < finish_repl; i++)
+    {
+        int temp = list[lenght - finish_repl + i];
+        list[lenght - finish_repl + i] = list[i];
+        list[i] = temp;
+    }
+
+    //сортирока пузырьком длиннейшего из отрезков, т.к. его переставляли не целиком
+    for(int i = start_sort; i < lenght - finish_sort - 1; i++)
+    {
+        for(int j = i + 1; j < lenght - finish_sort; j++)
+        {
+            if (list[i] > list[j]){
+                int temp = list[i];
+                list[i] = list[j];
+                list[j] = temp;
+            }
+        }
+    }
+
+    //вывод массива
+    for (int i = 0; i < lenght; i++)
+    {
+        printf(" %d", list[i]);
+    }
+    free(list);
+    return 0;
+}
