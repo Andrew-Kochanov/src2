@@ -1,21 +1,29 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
 int main(int argc, char **argv)
 {
-    char str[1000];
-    printf("%s", "Введите числа массива через пробел: ");
-    fgets(str, sizeof(str), stdin);
+    // создание массива с рандомными числами
+    int len = 20;
+    int* array = (int *)malloc(len * sizeof(int));
+
+    for (int i = 0; i < len; i++)
+    {
+        array[i] = rand() % 10;
+    }
+
     int count = 0;
 
-    for (int i = 0; i < strlen(str); i+2)
+    // проверка на нули и подсчет количества
+    for (int i = 0; i < len; i++)
     {
-        if (str[i] == '0')
+        if (array[i] == 0)
         {
             count++;
         }
     }
 
-    printf("%d", count);
+    printf("Количество нулей в массиве: %d\n", count);
+    free(array);
     return 0;
 }
