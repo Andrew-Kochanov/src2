@@ -1,41 +1,42 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 
-int main(int argc, char **argv)
+void balance(char* str)
 {
-    char str[1000];
-    fgets(str, sizeof(str), stdin);
+    // флаг для вложенности
+    bool flag = true;
 
     // коэф для проверки вложености скобок во время пробежки по строке(если коэф меньше 0, вложенность нарушена)
     // открывающая скобка имеет коэф +1
     // закрывающая скобка имеет коэф -1
-    int ratio = 0;
-    for (int i = 0; i < strlen(str); i++)
-    {
-        if (str[i] == '(')
-        {
-            ratio++;
+    int count = 0;
+    for (int i = 0; i < strlen(str); i++) {
+        if (str[i] == '(') {
+            count++;
 
+        } else if (str[i] == ')') {
+            count -= 1;
         }
-        else if (str[i] == ')')
-        {
-            ratio -= 1;
+        if (count < 0) {
+            flag = false;
         }
-        if (ratio < 0)
-        {
-            printf("Баланса нет\n");
-            return 0;
-        }
-
     }
 
     // если после пробежки по строке коэф неравен 0, значит, количество открывающих и закрывающих скобок разное
-    if (ratio == 0)
-    {
+    if (count == 0 && flag) {
         printf("Баланс есть\n");
     } else {
         printf("Баланса нет\n");
     }
+}
+
+int main(int argc, char** argv)
+{
+    char str[1000];
+    printf("Введите строку: ");
+    fgets(str, sizeof(str), stdin);
+    balance(str);
 
     return 0;
 }

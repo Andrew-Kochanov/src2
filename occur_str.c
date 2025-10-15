@@ -1,32 +1,33 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 
 // функция для создания подстроки из строки по индексам
-char* cross(char* str, int indStart, int indFinish){
+int countSubstring(char* str, char* str1)
+{
+    int count = 0;
 
-    // длина подстроки с учетом нулевого элемента
-    int len = indFinish - indStart + 1;
-    // выделение памяти
-    char *crossStr = (char *)malloc((len) * sizeof(char));
+    int lenStr = strlen(str);
+    int lenStr1 = strlen(str1);
 
-    int indCrStr = 0; // индекс для подстроки
-    int indStr = indStart; // индекс для строки
+    for (int indStr = 0; indStr < lenStr - lenStr1; indStr++) {
+        bool flag = true;
+        for (int indStr1 = 0; indStr1 < lenStr1; indStr1++) {
 
-    while (indStr < indFinish)
-    {
-        crossStr[indCrStr] = str[indStr]; // присвоение элементу подстроки значение элемента строки
-        indStr++;
-        indCrStr++;
+            if (str[indStr + indStr1] != str1[indStr1]) {
+                flag = false;
+                break;
+            }
+        }
+
+        if (flag) {
+            count++;
+        }
     }
-
-    crossStr[indCrStr] = '\0'; // добавление нулевого элемента
-
-    return crossStr;
+    return count;
 }
 
-
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
     char str[1000];
     printf("Введите строку: ");
@@ -36,22 +37,6 @@ int main(int argc, char **argv)
     fgets(str1, sizeof(str1), stdin);
     str1[strcspn(str1, "\n")] = '\0'; // меняем знак переноса строки на нулевой
 
-    int count = 0;
-    int lenStr = strlen(str);
-    int lenStr1 = strlen(str1);
-
-    // пробегаем по строке по-элементно, выделяем подстроку, сравнием полученную подстроку с исходной
-    for(int i = 0; i < lenStr - lenStr1 + 1; i++)
-    {
-        char* str2 = cross(str, i, i + lenStr1);
-        if (strcmp(str1, str2) == 0)
-        {
-            count++;
-        }
-        // освобождаем память
-        free(str2);
-    }
-
-    printf("Количество подстрок: %d\n", count);
+    printf("Количество подстрок: %d\n", countSubstring(str, str1));
     return 0;
 }
