@@ -33,10 +33,10 @@ void balance(char* str)
             break;
         case ')':
             countParentheses--;
-            if (flagCloseStap - 1 != 0) {
+            if (flagCloseStap - 1 != 0 && flagCloseStap != 0) {
                 countParentheses = -1;
             }
-
+            flagCloseStap = 0;
             break;
         case '{':
             countBraces++;
@@ -44,9 +44,10 @@ void balance(char* str)
             break;
         case '}':
             countBraces--;
-            if (flagCloseStap - 2 != 0) {
+            if (flagCloseStap - 2 != 0 && flagCloseStap != 0) {
                 countBraces = -1;
             }
+            flagCloseStap = 0;
             break;
         case '[':
             countBrackets++;
@@ -54,9 +55,10 @@ void balance(char* str)
             break;
         case ']':
             countBrackets--;
-            if (flagCloseStap - 3 != 0) {
+            if (flagCloseStap - 3 != 0 && flagCloseStap != 0) {
                 countBrackets = -1;
             }
+            flagCloseStap = 0;
             break;
         }
 
