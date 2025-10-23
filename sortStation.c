@@ -77,6 +77,6 @@ int main(int argc, char** argv)
     }
     printf("\n");
     free(results);
-
+    
     return 0;
 }
