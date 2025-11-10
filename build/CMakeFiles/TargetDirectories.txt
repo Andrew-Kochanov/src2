@@ -1,0 +1,4 @@
+/home/andrew/src2/build/CMakeFiles/stack.dir
+/home/andrew/src2/build/CMakeFiles/sortStation.dir
+/home/andrew/src2/build/CMakeFiles/edit_cache.dir
+/home/andrew/src2/build/CMakeFiles/rebuild_cache.dir
