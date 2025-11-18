@@ -107,7 +107,7 @@ void deleteList(List* list)
 
 int main(int argc, char** argv)
 {
-    List* list ={NULL};
+    List list ={NULL};
     int value = 0;
     
     
@@ -118,17 +118,17 @@ int main(int argc, char** argv)
         if (operation == 1){
             printf("Ведите, какое значение вставить: ");
             scanf("%d", &value);
-            insert(list, value);
+            insert(&list, value);
         } else if ( operation == 2){
             printf("Ведите, какое значение удалить: ");
             scanf("%d", &value);
-            if (deleteNode(list, value)){
+            if (deleteNode(&list, value)){
                 printf("Элемент удален\n");
             } else {
                 printf("Удалить элемент невозможно\n");
             }
         } else if (operation == 3){
-            printList(list);
+            printList(&list);
         } else {
             printf("Такой операции нет\n");
         }
@@ -136,6 +136,6 @@ int main(int argc, char** argv)
         scanf("%d", &operation);
     }
     printf("Вы вышли\n");
-    deleteList(list);
+    deleteList(&list);
     return 0;
 }
