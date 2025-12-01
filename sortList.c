@@ -14,19 +14,17 @@ typedef struct List {
     ListNode* head;
 } List;
 
-// структура списка
-ListNode* new(int value)
-{
-    ListNode* node = (ListNode*)malloc(sizeof(ListNode));
-    node->value = value;
-    node->next = NULL;
-    return node;
+List* newList(){
+    List* list = { NULL };
+    return list;
 }
 
 // положить элемент в соответствии с сортировкой
 void insert(List* list, int value)
 {
-    ListNode* newNode = new(value);
+    ListNode* newNode = (ListNode*)malloc(sizeof(ListNode));
+    newNode->value = value;
+    newNode->next = NULL;
 
     // Если список пуст или новый элемент меньше головы
     if (list->head == NULL || value < list->head->value) {

@@ -3,7 +3,8 @@
 
 typedef struct List List;
 
-ListNode* new(int value);
+
+List* newList();
 void insert(List* list, int value);
 bool deleteNode(List* list, int value);
 void printList(List* list);
