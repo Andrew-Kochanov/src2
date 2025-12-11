@@ -5,6 +5,7 @@ typedef struct List List;
 
 
 List* newList();
+int minNumber(int number);
 void insert(List* list, int value);
 bool deleteNode(List* list, int value);
 void printList(List* list);
