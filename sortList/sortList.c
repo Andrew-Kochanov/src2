@@ -1,4 +1,4 @@
-#include <stdbool.h>
+#include "sortList.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -14,19 +14,18 @@ typedef struct List {
     ListNode* head;
 } List;
 
-// структура списка
-ListNode* new(int value)
+List* newList()
 {
-    ListNode* node = (ListNode*)malloc(sizeof(ListNode));
-    node->value = value;
-    node->next = NULL;
-    return node;
+    List* list = { NULL };
+    return list;
 }
 
 // положить элемент в соответствии с сортировкой
 void insert(List* list, int value)
 {
-    ListNode* newNode = new(value);
+    ListNode* newNode = (ListNode*)malloc(sizeof(ListNode));
+    newNode->value = value;
+    newNode->next = NULL;
 
     // Если список пуст или новый элемент меньше головы
     if (list->head == NULL || value < list->head->value) {
@@ -70,12 +69,12 @@ bool deleteNode(List* list, int value)
 
     // Если элемент не найден
     if (current->next == NULL) {
-        return 0;
+        return false;
     }
 
     // удаление элемента
     ListNode* temprery = current->next;
-    current->next = temprery->next;
+    current->next = current->next->next;
     free(temprery);
     return true;
 }
