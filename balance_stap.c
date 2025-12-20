@@ -4,9 +4,6 @@
 
 void balance(char* str)
 {
-    // флаг для вложенности
-    bool flag = true;
-
     // коэф для проверки вложености скобок во время пробежки по строке(если коэф меньше 0, вложенность нарушена)
     // открывающая скобка имеет коэф +1
     // закрывающая скобка имеет коэф -1
@@ -16,18 +13,15 @@ void balance(char* str)
             count++;
 
         } else if (str[i] == ')') {
-            count -= 1;
-        }
-        if (count < 0) {
-            flag = false;
+            count--;
         }
     }
 
     // если после пробежки по строке коэф неравен 0, значит, количество открывающих и закрывающих скобок разное
-    if (count == 0 && flag) {
-        printf("Баланс есть\n");
+    if (count == 0) {
+        return true;
     } else {
-        printf("Баланса нет\n");
+        return false;
     }
 }
 
@@ -36,7 +30,11 @@ int main(int argc, char** argv)
     char str[1000];
     printf("Введите строку: ");
     fgets(str, sizeof(str), stdin);
-    balance(str);
+    if (balance(str)) {
+        printf("Баланс есть");
+    } else {
+        printf("Баланса нет");
+    }
 
     return 0;
 }
