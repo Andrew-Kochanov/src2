@@ -3,7 +3,6 @@
 #include <stdlib.h>
 // #include<stdbool.h>
 
-
 struct StackNode {
     // значение
     char value;
@@ -11,12 +10,12 @@ struct StackNode {
     struct StackNode* next;
 };
 
-// делаем ссулку на голову
+// делаем ссылку на голову
 struct Stack {
     struct StackNode* head;
 };
 
-// создаем пустую тсруктуру с пустой ссылкой на нулевую голову
+// создаем пустую структуру с пустой ссылкой на нулевую голову
 struct Stack* new(void)
 {
     struct Stack* stack = calloc(1, sizeof(*stack));
@@ -46,7 +45,7 @@ bool isEmpty(struct Stack* stack)
 
 char pop(struct Stack* stack)
 {
-    if (isEmpty(stack)){
+    if (isEmpty(stack)) {
         return '\0';
     }
     // получаем ссылку на текущую голову(стек)
@@ -69,6 +68,9 @@ char peek(struct Stack* stack)
 
 void deleteStack(struct Stack* stack)
 {
+    if (stack == NULL) {
+        return;
+    }
     while (!isEmpty(stack)) {
         pop(stack);
     }
