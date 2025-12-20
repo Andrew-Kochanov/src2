@@ -1,1 +1,0 @@
-/usr/bin/cc -Wl,--dependency-file=CMakeFiles/advancBalancStap.dir/link.d CMakeFiles/advancBalancStap.dir/advancBalancStap.c.o -o advancBalancStap  libstack.a
