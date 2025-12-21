@@ -16,7 +16,8 @@ typedef struct List {
 
 List* newList()
 {
-    List* list = { NULL };
+    List* list = (List*)malloc(sizeof(List));
+    list->head = NULL;
     return list;
 }
 
