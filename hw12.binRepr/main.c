@@ -2,7 +2,6 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdlib.h>
 
 bool sravn(int* bin1, int* bin2)
 {
@@ -76,7 +75,7 @@ int main(int argc, char** argv)
     int* summ = binSumm(num1Bin, num2Bin);
     prinf("Сумма в двоичной системе: ");
     binPrint(summ);
-    
+
     int sumDecimal = decimal(summ);
     printf("Сумма в десятичной системе %d", sumDecimal);
 
