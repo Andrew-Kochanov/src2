@@ -49,7 +49,7 @@ bool test()
 int main(int argc, char** argv)
 {
 
-    if (argv[0] == "--test") {
+    if (argc == 2 && strcmp(argv[1], "--test") == 0) {
         if (!test()) {
             printf("Test failed\n");
             return 1;
