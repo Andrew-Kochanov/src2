@@ -3,8 +3,62 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+bool testDeleteEmptyNode()
+{
+    List list = newList();
+    return !deleteNode(list, 123313);
+}
+
+bool testDeleteNode()
+{
+    List list = newList();
+    inert(list, 5);
+    return deleteNode(list, 5);
+}
+
+bool testDeleteEmptyList()
+{
+    List list = newList();
+    deleteList(list);
+    return list == NULL;
+}
+
+bool testDeleteList()
+{
+    List list = newList();
+    insert(list, 5);
+    insert(list, 4);
+    deleteList(list);
+    return list == NULL;
+}
+
+bool test()
+{
+    if (testDeleteEmptyList()) {
+        if (testDeleteEmptyNode()) {
+            if (testDeleteList()) {
+                if (testDeleteNode()) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
 int main(int argc, char** argv)
 {
+
+    if (argv[0] == "--test") {
+        if (!test()) {
+            printf("Test failed\n");
+            return 1;
+        } else {
+            printf("Test passed\n");
+            return 0;
+        }
+    }
+
     List* list = newList();
     int value = 0;
 
