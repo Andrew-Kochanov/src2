@@ -8,7 +8,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 add_library(sortList sortList/sortList.c)
 
 # Создаём исполняемый файл из файла в другой поддиректории
-add_executable(main hw.sort.List/main.c)
+add_executable(main hw.sortList/main.c)
 
 # Линкуем библиотеку
 target_link_libraries(main PRIVATE sortList)
