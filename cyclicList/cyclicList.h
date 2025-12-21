@@ -2,6 +2,11 @@
 #include <stdbool.h>
 
 typedef struct List List;
+// узел списка
+typedef struct ListNode {
+    int value;
+    struct ListNode* next;
+} ListNode;
 
 List* newList();
 bool isEmpty(List* list);
