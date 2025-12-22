@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.25)
 
-project(hw1 C)
+project(hw2 C)
 
 add_executable(formula_for_2_multi formula_for_2_multi.c)
 
