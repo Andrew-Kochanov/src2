@@ -32,7 +32,7 @@ bool testSorted2(){
     insert(list, 6);
     insert(list, -1111);
     int array[] = {-1111, 5};
-    return !equalToArray(list, array, 3);
+    return !equalToArray(list, array, 2);
 }
 
 bool test()

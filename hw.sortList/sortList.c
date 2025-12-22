@@ -19,7 +19,7 @@ List* newList()
 {
     List* list = (List*)malloc(sizeof(List));
     list->head = NULL;
-    list->size++;
+    list->size = 0;
     return list;
 }
 
@@ -119,12 +119,13 @@ bool equalToArray(List* list, int* array, int arrayLength){
     if (list->size != arrayLength){
         return false;
     }
-    
+
     while (i < arrayLength) {
         if (current-> value != array[i]){
             return false;
         }
         current = current->next;
+        i++;
     }
     return true;
 }
