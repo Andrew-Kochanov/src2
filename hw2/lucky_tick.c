@@ -13,7 +13,7 @@ int main(int argc, char** argv)
 
     int sum = 0;
     for (int ind = 0; ind < 28; ind++) {
-        sum += pow(array[ind], 2);
+        sum += (array[ind] * array[ind]);
     }
     printf("Количество счасливых билетов: %d\n", sum);
     return 0;
