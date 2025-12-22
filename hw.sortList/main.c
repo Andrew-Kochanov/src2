@@ -6,27 +6,27 @@
 
 bool testDeleteEmptyNode()
 {
-    List list = newList();
+    List* list = newList();
     return !deleteNode(list, 123313);
 }
 
 bool testDeleteNode()
 {
-    List list = newList();
+    List* list = newList();
     inert(list, 5);
     return deleteNode(list, 5);
 }
 
 bool testDeleteEmptyList()
 {
-    List list = newList();
+    List* list = newList();
     deleteList(list);
     return list == NULL;
 }
 
 bool testDeleteList()
 {
-    List list = newList();
+    List* list = newList();
     insert(list, 5);
     insert(list, 4);
     deleteList(list);
