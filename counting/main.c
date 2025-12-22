@@ -5,7 +5,7 @@
 
 int main(int argc, char** argv)
 {
-    // Количество войнов
+    // Количество воинов
     int n = 0;
     // какого война будут убивать
     int m = 0;
@@ -14,7 +14,7 @@ int main(int argc, char** argv)
         printf("Введите количество войнов: ");
         scanf("%d", &n);
         printf("Введите, какого по счету война будут убивать: ");
-        scanf("d", &m);
+        scanf("%d", &m);
     }
 
     List* warriors = newList();
