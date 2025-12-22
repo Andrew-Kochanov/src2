@@ -61,7 +61,7 @@ int main(int argc, char** argv)
     printf("Введите первое число(целое не больше 2^32): ");
     scanf("%d", &number1);
     int number2 = 0;
-    prntf("Введите второе число(целое не больше 2^32): ");
+    printf("Введите второе число(целое не больше 2^32): ");
     scanf("%d", number2);
 
     int* num1Bin = bin(number1);
@@ -73,7 +73,7 @@ int main(int argc, char** argv)
     binPrint(num2Bin);
 
     int* summ = binSumm(num1Bin, num2Bin);
-    prinf("Сумма в двоичной системе: ");
+    printf("Сумма в двоичной системе: ");
     binPrint(summ);
 
     int sumDecimal = decimal(summ);
