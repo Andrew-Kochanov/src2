@@ -41,15 +41,12 @@ int decimal(int num[])
 {
     int decimalNum = 0;
 
-    if (num[0] == 0) {
-        for (int i = 0; i < 30; i++) {
-            int degree = 1 << i;
-            decimalNum += degree * num[31 - i];
-        }
-        int degree = 1 << 31;
-        decimalNum -= degree * num[0];
-        return decimalNum;
+    for (int i = 0; i < 30; i++) {
+        int degree = 1 << i;
+        decimalNum += degree * num[31 - i];
     }
+    int degree = 1 << 31;
+    decimalNum -= degree * num[0];
     return decimalNum;
 }
 
