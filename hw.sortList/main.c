@@ -17,25 +17,27 @@ bool testDeleteNode()
     return deleteNode(list, 5);
 }
 
-bool testDeleteEmptyList()
-{
-    List* list = newList();
-    deleteList(list);
-    return list == NULL;
-}
-
-bool testDeleteList()
-{
+bool testSorted1(){
     List* list = newList();
     insert(list, 5);
-    insert(list, 4);
-    deleteList(list);
-    return list == NULL;
+    insert(list, 6);
+    insert(list, -1111);
+    int array = {-1111, 5, 6};
+    return equalToArray(list, array, 3);
+}
+
+bool testSorted2(){
+    List* list = newList();
+    insert(list, 5);
+    insert(list, 6);
+    insert(list, -1111);
+    int array = {-1111, 5};
+    return !equalToArray(list, array, 3);
 }
 
 bool test()
 {
-    return (testDeleteEmptyList() && testDeleteEmptyNode() && testDeleteList() && testDeleteNode());
+    return (testSorted1() && testDeleteEmptyNode() && testSorted2()) && testDeleteNode());
 }
 
 int main(int argc, char** argv)

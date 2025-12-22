@@ -12,12 +12,14 @@ typedef struct ListNode {
 
 typedef struct List {
     ListNode* head;
+    int size;
 } List;
 
 List* newList()
 {
     List* list = (List*)malloc(sizeof(List));
     list->head = NULL;
+    list->size++;
     return list;
 }
 
@@ -32,6 +34,7 @@ void insert(List* list, int value)
     if (list->head == NULL || value < list->head->value) {
         newNode->next = list->head;
         list->head = newNode;
+        list->size++;
         return;
     }
 
@@ -44,6 +47,7 @@ void insert(List* list, int value)
     // вставка
     newNode->next = current->next;
     current->next = newNode;
+    list->size++;
 }
 
 // проверка на возможность удаления элемента
@@ -59,6 +63,7 @@ bool deleteNode(List* list, int value)
         ListNode* temprery = list->head;
         list->head = list->head->next;
         free(temprery);
+        list->size--;
         return true;
     }
 
@@ -77,6 +82,7 @@ bool deleteNode(List* list, int value)
     ListNode* temprery = current->next;
     current->next = current->next->next;
     free(temprery);
+    list->size--;
     return true;
 }
 
@@ -91,6 +97,10 @@ void printList(List* list)
     printf("\n");
 }
 
+bool isEmpty(List* list){
+    return list->head == NULL;
+}
+
 // удаление списка
 void deleteList(List* list)
 {
@@ -100,5 +110,21 @@ void deleteList(List* list)
         current = current->next;
         free(temprery);
     }
-    list->head = NULL;
+    free(list);
+}
+
+bool equalToArray(List* list, int* array, int arrayLength){
+    ListNode* current = list->head;
+    int i = 0;
+    if (list->size != arrayLength){
+        return false;
+    }
+    
+    while (i < arrayLength) {
+        if (current-> value != array[i]){
+            return false;
+        }
+        current = current->next;
+    }
+    return true;
 }
