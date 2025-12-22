@@ -22,7 +22,7 @@ bool testSorted1(){
     insert(list, 5);
     insert(list, 6);
     insert(list, -1111);
-    int array = {-1111, 5, 6};
+    int array[] = {-1111, 5, 6};
     return equalToArray(list, array, 3);
 }
 
@@ -31,13 +31,13 @@ bool testSorted2(){
     insert(list, 5);
     insert(list, 6);
     insert(list, -1111);
-    int array = {-1111, 5};
+    int array[] = {-1111, 5};
     return !equalToArray(list, array, 3);
 }
 
 bool test()
 {
-    return (testSorted1() && testDeleteEmptyNode() && testSorted2()) && testDeleteNode());
+    return (testSorted1() && testDeleteEmptyNode() && testSorted2() && testDeleteNode());
 }
 
 int main(int argc, char** argv)
