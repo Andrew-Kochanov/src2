@@ -1,7 +1,8 @@
-#include "../sortList/sortList.h"
+#include "sortList.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 bool testDeleteEmptyNode()
 {
@@ -34,16 +35,7 @@ bool testDeleteList()
 
 bool test()
 {
-    if (testDeleteEmptyList()) {
-        if (testDeleteEmptyNode()) {
-            if (testDeleteList()) {
-                if (testDeleteNode()) {
-                    return true;
-                }
-            }
-        }
-    }
-    return false;
+    return (testDeleteEmptyList() && testDeleteEmptyNode() && testDeleteList() && testDeleteNode());
 }
 
 int main(int argc, char** argv)
@@ -62,10 +54,11 @@ int main(int argc, char** argv)
     List* list = newList();
     int value = 0;
 
-    printf("Ведите номер операции: 0 - выйти, 1 - добавить значение, 2 - удалить значение, 3 - распечатать список: ");
-    int operation = 0;
-    scanf("%d", &operation);
-    while (operation != 0) {
+    const char helpMassage = "Ведите номер операции: 0 - выйти, 1 - добавить значение, 2 - удалить значение, 3 - распечатать список: ";
+    do {
+        printf("%s", helpMassage);
+        int operation = 0;
+        scanf("%d", &operation);
         if (operation == 1) {
             printf("Ведите, какое значение вставить: ");
             scanf("%d", &value);
@@ -83,9 +76,7 @@ int main(int argc, char** argv)
         } else {
             printf("Такой операции нет\n");
         }
-        printf("Ведите номер операции: 0 - выйти, 1 - добавить значение, 2 - удалить значение, 3 - распечатать список: ");
-        scanf("%d", &operation);
-    }
+    } while (operation != 0);
     printf("Вы вышли\n");
     deleteList(list);
     return 0;
