@@ -13,8 +13,8 @@ int main(int argc, char** argv)
     while (n <= 0 || m <= 0) {
         printf("Введите количество войнов: ");
         scanf("%d", &n);
-        printf("Введите, какого по счету война будут убивать: ")
-            scanf("d", &m);
+        printf("Введите, какого по счету война будут убивать: ");
+        scanf("d", &m);
     }
 
     List* warriors = newList();

@@ -1,18 +1,18 @@
 #pragma once
 #include <stdbool.h>
 
+// узел списка
+typedef struct ListNode {
+    int value;
+    struct ListNode* next;
+} ListNode;
+
 typedef struct List {
     ListNode* head;
     ListNode* tail;
     // длина
     int size;
 } List;
-
-// узел списка
-typedef struct ListNode {
-    int value;
-    struct ListNode* next;
-} ListNode;
 
 List* newList();
 bool isEmpty(List* list);
