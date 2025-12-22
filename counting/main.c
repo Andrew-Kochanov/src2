@@ -1,4 +1,4 @@
-#include "../cyclicList/cyclicList.h"
+#include "cyclicList.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,6 +22,7 @@ int main(int argc, char** argv)
         insert(warriors, ind);
     }
 
+    ListNode* current = warriors->head;
     int count = 1;
     while (getSize(warriors) > 1) {
         // Если дошли до m-го воина
