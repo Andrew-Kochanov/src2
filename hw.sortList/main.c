@@ -13,7 +13,7 @@ bool testDeleteEmptyNode()
 bool testDeleteNode()
 {
     List* list = newList();
-    inert(list, 5);
+    insert(list, 5);
     return deleteNode(list, 5);
 }
 
@@ -54,7 +54,8 @@ int main(int argc, char** argv)
     List* list = newList();
     int value = 0;
 
-    const char helpMassage = "Ведите номер операции: 0 - выйти, 1 - добавить значение, 2 - удалить значение, 3 - распечатать список: ";
+    const char* helpMassage = "Ведите номер операции: 0 - выйти, 1 - добавить значение, 2 - удалить значение, 3 - распечатать список: ";
+    int operation = 0;
     do {
         printf("%s", helpMassage);
         int operation = 0;
